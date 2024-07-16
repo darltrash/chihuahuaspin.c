@@ -171,6 +171,8 @@ int main() {
         // We calculate how many times has this GIF played
         uint64_t spin_counter = frame / spin_gif_frames;
 
+        uint16_t y = (H/2) - (spin_gif_height/2);
+
         // If GIF has finished once or several times
         if (spin_counter != previous_spin) {
             // Clears the buffer so it's all white
@@ -189,7 +191,7 @@ int main() {
 
             // We render it in the middle
             uint32_t text_w = text_size(buffer);
-            draw_text(buffer, (W/2)-(text_w/2), 50+spin_gif_height);
+            draw_text(buffer, (W/2)-(text_w/2), y+40+spin_gif_height);
 
             // We do all of this so it won't need to clear the screen every frame
             // Yes, I am aware it's a bit of an exaggerated optimization, but, eh, it's fun lol
@@ -198,7 +200,7 @@ int main() {
         }
 
         // Render the GIF in the top middle of the screen
-        draw_spin((W/2) - (spin_gif_width/2), 20, frame % spin_gif_frames);
+        draw_spin((W/2) - (spin_gif_width/2), y, frame % spin_gif_frames);
 
         // So we do not starve the compositor thread
         fenster_sleep(1);
