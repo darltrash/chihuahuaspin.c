@@ -1,4 +1,4 @@
-CC := gcc
+CC ?= gcc
 
 gif:
 	wget https://theuselessweb.site/chihuahuaspin/spin.gif -O chihuahuaspin.temp.gif
