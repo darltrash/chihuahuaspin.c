@@ -66,7 +66,7 @@ uint32_t text_size(char *text) {
         }
 
         // Go on!
-        x += character.width;
+        x += character.width-character.originX;
     }
 
     return x;
@@ -119,7 +119,7 @@ void draw_text(char *text, uint16_t x, uint16_t y) {
         }
 
         // We go on!
-        x += character.width;
+        x += character.width-character.originX;
     }
 }
 
